@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpMeSpeak - Support & Help Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 56px;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        h3 {
+            color: #4f46e5;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #2563eb;
+        }
+
+        .intro-box p {
+            color: #1e40af;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .faq-item h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #7c3aed 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-box h3 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .contact-box a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-bottom: 2px solid white;
+            padding-bottom: 2px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            padding: 15px 0 15px 50px;
+            position: relative;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .steps li:before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            background: #2563eb;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #f5f3ff 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #bfdbfe;
+        }
+
+        .feature-card h4 {
+            color: #1e40af;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .feature-card p {
+            color: #4b5563;
+            font-size: 15px;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .language-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .language-item span {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .tip-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .tip-box strong {
+            color: #92400e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 25px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .logo-icon {
+                font-size: 42px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .language-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🌍</span>
+                <span>HelpMeSpeak</span>
+            </div>
+            <p>Support & Help Center</p>
+        </header>
+
+        <div class="content">
+            <h2>Welcome to HelpMeSpeak Support</h2>
+            <div class="intro-box">
+                <p>HelpMeSpeak is your ultimate language companion that breaks down communication barriers. Whether you're traveling, learning a new language, or connecting with people worldwide, we've got you covered with instant translations, AI-powered conversations, and essential phrases at your fingertips.</p>
+            </div>
+
+            <h2>Getting Started</h2>
+            <ol class="steps">
+                <li>Download HelpMeSpeak from the App Store or Play Store</li>
+                <li>Create your account with email and password</li>
+                <li>Set your profile preferences (native language, interests)</li>
+                <li>Explore the three main features: Translation, AI Chat, and Phrasebook</li>
+                <li>Start communicating in any language instantly!</li>
+                <li>Save your favorite phrases for quick access</li>
+            </ol>
+
+            <h2>Core Features</h2>
+
+            <div class="feature-card">
+                <h4>🔄 Instant Translation</h4>
+                <p>Translate text, voice, and images in real-time across 100+ languages. Type or speak in your language and get instant, accurate translations.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>🤖 AI Chat Translation</h4>
+                <p>Have natural conversations with our AI assistant in any language. Practice speaking, get grammar corrections, and improve your language skills with intelligent feedback.</p>
+            </div>
+
+            <div class="feature-card">
+                <h4>📚 Common Phrasebook</h4>
+                <p>Access thousands of essential phrases organized by categories: greetings, dining, travel, emergencies, business, and more. Save your favorites for offline use.</p>
+            </div>
+
+            <h2>Supported Languages</h2>
+            <p>HelpMeSpeak supports translation for over 100 languages including:</p>
+            
+            <div class="language-grid">
+                <div class="language-item">
+                    <span>🇬🇧</span>
+                    English
+                </div>
+                <div class="language-item">
+                    <span>🇪🇸</span>
+                    Spanish
+                </div>
+                <div class="language-item">
+                    <span>🇫🇷</span>
+                    French
+                </div>
+                <div class="language-item">
+                    <span>🇩🇪</span>
+                    German
+                </div>
+                <div class="language-item">
+                    <span>🇯🇵</span>
+                    Japanese
+                </div>
+                <div class="language-item">
+                    <span>🇨🇳</span>
+                    Chinese
+                </div>
+                <div class="language-item">
+                    <span>🇰🇷</span>
+                    Korean
+                </div>
+                <div class="language-item">
+                    <span>🇮🇹</span>
+                    Italian
+                </div>
+                <div class="language-item">
+                    <span>🇷🇺</span>
+                    Russian
+                </div>
+                <div class="language-item">
+                    <span>🇧🇩</span>
+                    Bengali
+                </div>
+                <div class="language-item">
+                    <span>🇮🇳</span>
+                    Hindi
+                </div>
+                <div class="language-item">
+                    <span>🇦🇪</span>
+                    Arabic
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 15px; color: #666;">...and 88 more languages!</p>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <h4>How accurate are the translations?</h4>
+                <p>HelpMeSpeak uses advanced AI and Google Cloud Translation API to provide highly accurate translations. For best results, use clear and simple sentences. Context-dependent phrases may vary, but we continuously improve our algorithms.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I use HelpMeSpeak offline?</h4>
+                <p>The Phrasebook feature works offline once you've saved your favorite phrases. However, Instant Translation and AI Chat require an internet connection for real-time processing.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How does the AI Chat feature work?</h4>
+                <p>Our AI Chat uses advanced language models to understand your message in any language, respond naturally, and help you practice conversations. It can correct grammar, suggest better phrases, and adapt to your learning pace.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Is my translation history saved?</h4>
+                <p>Yes! Your translation history is automatically saved in your account. You can view, search, and delete past translations from your profile settings at any time.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How do I add phrases to my personal phrasebook?</h4>
+                <p>When viewing any phrase or translation, tap the bookmark icon to save it to your personal collection. Access your saved phrases from the Phrasebook section anytime.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I translate images with text?</h4>
+                <p>Yes! Use our camera feature to take a photo of signs, menus, documents, or any text, and HelpMeSpeak will detect and translate the text instantly.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Are there any usage limits?</h4>
+                <p>Free users get unlimited basic translations and access to the phrasebook. AI Chat has a daily limit for free users. Upgrade to Premium for unlimited AI conversations and advanced features.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How do I change my profile language preferences?</h4>
+                <p>Go to Profile → Edit Profile, and update your native language and learning languages. This helps personalize your experience and translation suggestions.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can multiple people use the same account?</h4>
+                <p>Each account is designed for individual use to maintain personalized learning history and preferences. Family plans may be available in the future.</p>
+            </div>
+
+            <h2>Pro Tips for Best Results</h2>
+
+            <div class="tip-box">
+                <strong>💡 Tip:</strong> Speak clearly and at a moderate pace when using voice translation for more accurate results.
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Tip:</strong> Use the AI Chat feature to practice conversations before important meetings or trips.
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Tip:</strong> Save commonly used phrases to your phrasebook for instant access without typing.
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Tip:</strong> Enable camera permissions to use the instant image translation feature for signs and menus.
+            </div>
+
+            <h2>Privacy & Data Security</h2>
+            <ul class="feature-list">
+                <li>All translations are encrypted end-to-end</li>
+                <li>We never share your personal data with third parties</li>
+                <li>You can delete your translation history anytime</li>
+                <li>AI conversations are processed securely and not stored permanently</li>
+                <li>Optional: Enable biometric login for added security</li>
+                <li>Your data is stored securely on Firebase with industry-standard protection</li>
+            </ul>
+
+            <h2>Technical Support</h2>
+            
+            <div class="faq-item">
+                <h4>The app is not translating correctly</h4>
+                <p>Ensure you have a stable internet connection. Try refreshing the app or switching to a different network. If using voice, check your microphone permissions in device settings.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Voice input is not working</h4>
+                <p>Check that microphone permissions are enabled for HelpMeSpeak in your device settings. Ensure you're in a quiet environment for better voice recognition.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Camera translation feature not working</h4>
+                <p>Enable camera permissions in your device settings. Ensure adequate lighting and hold your device steady for clear text recognition.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>AI Chat responses are slow</h4>
+                <p>This may be due to high server load or slow internet. AI processing takes a few seconds. Check your connection speed and try again.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>My saved phrases disappeared</h4>
+                <p>Ensure you're logged into the correct account. Saved phrases are synced with your account. If the issue persists, contact support with your account details.</p>
+            </div>
+
+            <h2>Account Management</h2>
+            
+            <div class="faq-item">
+                <h4>How do I reset my password?</h4>
+                <p>On the sign-in screen, tap "Forgot Password" and enter your email. You'll receive a password reset link within minutes.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I change my email address?</h4>
+                <p>Yes! Go to Profile → Edit Profile → Update Email. You'll need to verify your new email address.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How do I delete my account?</h4>
+                <p>Go to Profile → Scroll down → Delete Account. Note that this action is permanent and will delete all your data, including translation history and saved phrases.</p>
+            </div>
+
+            <h2>Community Guidelines</h2>
+            <p>To keep HelpMeSpeak a helpful and respectful space:</p>
+            <ul class="feature-list">
+                <li>Use the app for legitimate translation and learning purposes</li>
+                <li>Be respectful when practicing with AI Chat</li>
+                <li>Don't use translations for spam or harassment</li>
+                <li>Report bugs or inappropriate AI responses to help us improve</li>
+                <li>Respect cultural differences when using translations</li>
+                <li>Don't attempt to bypass AI safety features</li>
+            </ul>
+
+            <h2>Premium Features (Coming Soon)</h2>
+            <ul class="feature-list">
+                <li>Unlimited AI Chat conversations</li>
+                <li>Advanced conversation practice modes</li>
+                <li>Offline translation for all languages</li>
+                <li>Custom phrasebook categories</li>
+                <li>Priority customer support</li>
+                <li>Ad-free experience</li>
+                <li>Advanced pronunciation guides</li>
+                <li>Language learning progress tracking</li>
+            </ul>
+
+            <div class="contact-box">
+                <h3>Need More Help?</h3>
+                <p>Can't find the answer you're looking for? Our support team is ready to assist!</p>
+                <p style="margin-top: 20px;">📧 Email us at: <a href="mailto:support@helpmespeak.com">support@helpmespeak.com</a></p>
+                <p style="margin-top: 15px;">🌐 Visit: <a href="https://www.helpmespeak.com">www.helpmespeak.com</a></p>
+                <p style="margin-top: 10px; font-size: 14px; opacity: 0.9;">We typically respond within 24 hours</p>
+                <p style="margin-top: 15px; font-size: 13px; opacity: 0.85;">📍 Location: Dhaka, Bangladesh</p>
+            </div>
+
+            <h2>Stay Connected</h2>
+            <p style="text-align: center; margin-top: 20px;">
+                Follow us for updates, tips, and language learning content!
+            </p>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 HelpMeSpeak. All rights reserved.</p>
+            <p style="margin-top: 10px;">Breaking Language Barriers, One Word at a Time 🌍</p>
+        </footer>
+    </div>
+</body>
+</html>
